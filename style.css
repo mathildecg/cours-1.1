@@ -1,0 +1,567 @@
+:root {
+  --fond: #efe9ff;
+  --encre: #1c1247;
+  --violet: #6b4de6;
+  --orange: #ff7a1a;
+  --jaune: #ffd23f;
+  --rose: #ff7ac6;
+  --ciel: #bfe9ff;
+  --blanc: #ffffff;
+  --ombre: 6px 6px 0 var(--encre);
+  --entete: 4.5rem; /* mis à jour par le JavaScript */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--encre);
+  background: var(--fond);
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, .logo, .tab, .bouton, .chiffre strong {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+}
+
+a:focus-visible, button:focus-visible, summary:focus-visible, .rail:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+section[id] { scroll-margin-top: calc(var(--entete) + 0.5rem); }
+
+/* ===== Progression ===== */
+.progression {
+  position: fixed; top: 0; left: 0;
+  height: 5px; width: 0;
+  background: linear-gradient(90deg, var(--orange), var(--rose));
+  z-index: 100;
+}
+
+/* ===== En-tête intelligent ===== */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--fond);
+  border-bottom: 3px solid var(--encre);
+  transition: transform 0.3s ease;
+}
+.entete.cache { transform: translateY(-101%); }
+
+.logo {
+  font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em;
+  color: var(--encre); text-decoration: none;
+}
+.logo span { color: var(--violet); }
+
+.menu { display: flex; gap: 0.5rem; list-style: none; }
+
+.menu a {
+  display: block;
+  padding: 0.35rem 0.95rem;
+  border: 2px solid var(--encre);
+  border-radius: 999px;
+  background: var(--blanc);
+  color: var(--encre);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.menu a:hover { background: var(--jaune); transform: translateY(-2px) rotate(-2deg); }
+.menu a.actif { background: var(--violet); color: var(--blanc); }
+
+/* ===== Boutons ===== */
+.bouton {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border: 3px solid var(--encre);
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--encre);
+  font-size: 1.05rem; font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--encre);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.bouton:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--encre); }
+.bouton:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--encre); }
+.bouton.secondaire { background: var(--blanc); }
+.bouton.petit { padding: 0.4rem 1rem; font-size: 0.95rem; box-shadow: 3px 3px 0 var(--encre); }
+
+.compteur {
+  display: inline-grid; place-items: center;
+  min-width: 1.5rem; height: 1.5rem; padding: 0 0.3rem;
+  margin-left: 0.3rem;
+  border-radius: 999px;
+  background: var(--encre); color: var(--blanc);
+  font-size: 0.85rem;
+}
+
+.puce {
+  display: inline-block;
+  padding: 0.2rem 0.85rem;
+  border: 2px solid var(--encre);
+  border-radius: 999px;
+  background: var(--jaune);
+  font-size: 0.88rem; font-weight: 700;
+}
+.puce.petite { font-size: 0.8rem; padding: 0.1rem 0.7rem; background: var(--ciel); }
+
+/* ===== Hero ===== */
+.hero {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.mega {
+  font-size: clamp(3.6rem, 13vw, 9rem);
+  font-weight: 800; line-height: 0.95; letter-spacing: -0.05em;
+  margin: 1rem 0 1.25rem;
+  color: var(--violet);
+}
+.mega .lettre { display: inline-block; animation: pop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+@keyframes pop {
+  from { opacity: 0; transform: translateY(40px) rotate(8deg) scale(0.6); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-intro { max-width: 32rem; font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+.pastilles { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pastille {
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--encre);
+  border-radius: 999px;
+  background: var(--blanc);
+  color: var(--encre);
+  font-weight: 700; text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.pastille:hover { background: var(--rose); transform: translateY(-2px) rotate(-2deg); }
+
+.hero-visuel { position: relative; }
+
+.sticker {
+  position: absolute; top: -1.5rem; right: -0.5rem;
+  width: 7.5rem; height: 7.5rem;
+  display: grid; place-items: center; text-align: center;
+  border: 3px solid var(--encre); border-radius: 50%;
+  background: var(--rose);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800; line-height: 1.1;
+  transform: rotate(12deg);
+  box-shadow: 4px 4px 0 var(--encre);
+}
+
+/* ===== Photos avec dégradé de secours ===== */
+.photo {
+  background-image: var(--img), var(--secours);
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--encre);
+  box-shadow: var(--ombre);
+}
+.f-soleil  { --secours: linear-gradient(160deg, #8f7bf0 0%, #ffb36b 60%, #e8632b 100%); }
+.f-ocre    { --secours: linear-gradient(160deg, #ffd23f 0%, #ff7a1a 55%, #c4421f 100%); }
+.f-vert    { --secours: linear-gradient(160deg, #b8e08a 0%, #4fa36b 100%); }
+.f-rose    { --secours: linear-gradient(160deg, #ffb3e0 0%, #8f7bf0 100%); }
+.f-ciel    { --secours: linear-gradient(160deg, #bfe9ff 0%, #6b4de6 100%); }
+.f-lavande { --secours: linear-gradient(160deg, #e0d6ff 0%, #ff7ac6 100%); }
+
+.photo-hero { aspect-ratio: 4 / 5; border-radius: 36px; will-change: transform; }
+
+.credit { margin-top: 0.4rem; font-size: 0.78rem; opacity: 0.75; }
+
+/* ===== Bandeau défilant ===== */
+.marquee {
+  overflow: hidden;
+  background: var(--orange);
+  border-top: 3px solid var(--encre);
+  border-bottom: 3px solid var(--encre);
+  transform: rotate(-1.5deg) scale(1.03);
+  margin: 1rem 0 2.5rem;
+}
+.marquee-piste { display: flex; width: max-content; animation: defile 30s linear infinite; }
+.marquee:hover .marquee-piste { animation-play-state: paused; }
+.marquee span {
+  padding: 0.8rem 1rem;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.5rem; font-weight: 800; white-space: nowrap;
+}
+@keyframes defile { to { transform: translateX(-50%); } }
+
+/* ===== Chiffres ===== */
+.chiffres {
+  max-width: 72rem; margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1.5rem;
+}
+.chiffre {
+  padding: 1.25rem 1.5rem;
+  background: var(--blanc);
+  border: 3px solid var(--encre);
+  border-radius: 20px;
+  box-shadow: var(--ombre);
+}
+.chiffre:nth-child(1) { background: var(--jaune); }
+.chiffre:nth-child(2) { background: var(--rose); }
+.chiffre:nth-child(3) { background: var(--ciel); }
+.chiffre strong { display: block; font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+
+/* ===== Sections ===== */
+.bloc { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.5rem; }
+.bloc h2, .saisons-entete h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+.chapeau { font-size: 1.15rem; margin-bottom: 2rem; max-width: 40rem; }
+
+/* ===== Onglets des villes (collés sous l'en-tête) ===== */
+.tablist {
+  position: sticky;
+  top: calc(var(--entete) + 0.75rem);
+  z-index: 40;
+  display: flex;
+  gap: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.4rem;
+  margin-bottom: 2rem;
+  background: var(--blanc);
+  border: 3px solid var(--encre);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--encre);
+  transition: top 0.3s ease;
+}
+.tablist::-webkit-scrollbar { display: none; }
+body.entete-cache .tablist { top: 0.75rem; }
+
+.indicateur {
+  position: absolute; top: 0.4rem; bottom: 0.4rem; left: 0; width: 0;
+  background: var(--violet);
+  border-radius: 999px;
+  transition: left 0.35s cubic-bezier(0.3, 1.4, 0.5, 1), width 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.tab {
+  position: relative; z-index: 1;
+  padding: 0.6rem 1.25rem;
+  border: none; border-radius: 999px;
+  background: transparent; color: var(--encre);
+  font-size: 1rem; font-weight: 700; white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.tab[aria-selected="true"] { color: var(--blanc); }
+
+.panel:not([hidden]) { animation: apparait 0.4s ease both; }
+@keyframes apparait {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ===== Panneau d'une ville ===== */
+.ville-tete {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.ville-photo { aspect-ratio: 4 / 3; border-radius: 24px; }
+.ville-texte h3 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+  margin: 0.8rem 0;
+}
+.accroche { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.6rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin-top: 1.1rem; }
+.chips li {
+  padding: 0.25rem 0.8rem;
+  border: 2px solid var(--encre);
+  border-radius: 999px;
+  background: var(--blanc);
+  font-size: 0.9rem; font-weight: 500;
+}
+
+/* ===== Rail de lieux (défilement horizontal avec accroche) ===== */
+.rail-entete {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; margin-bottom: 1rem;
+}
+.rail-entete h4 { font-size: 1.5rem; letter-spacing: -0.03em; }
+.rail-boutons { display: flex; gap: 0.5rem; }
+.rail-btn {
+  width: 2.8rem; height: 2.8rem;
+  border: 3px solid var(--encre); border-radius: 50%;
+  background: var(--blanc);
+  font-size: 1.2rem; font-weight: 800; cursor: pointer;
+  box-shadow: 3px 3px 0 var(--encre);
+  transition: transform 0.15s, background 0.15s;
+}
+.rail-btn:hover:not(:disabled) { background: var(--jaune); transform: translate(-1px, -1px); }
+.rail-btn:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+
+.rail {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0.25rem;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 0.5rem 1rem 1.5rem 0.25rem;
+  cursor: grab;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail.glisse { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+
+.lieu {
+  flex: 0 0 min(80vw, 20rem);
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  background: var(--blanc);
+  border: 3px solid var(--encre);
+  border-radius: 20px;
+  box-shadow: var(--ombre);
+  overflow: hidden;
+  opacity: 0.55;
+  transform: scale(0.97);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.lieu.actif { opacity: 1; transform: none; }
+
+.lieu-photo { aspect-ratio: 4 / 3; border: none; border-bottom: 3px solid var(--encre); border-radius: 0; box-shadow: none; }
+
+.lieu-corps { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; padding: 1.1rem 1.25rem 1.25rem; }
+.lieu-corps h4 { font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.02em; }
+.lieu-corps p { flex: 1; font-size: 0.98rem; }
+.lieu-bas { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.lieu-bas .credit { margin: 0; }
+
+.sauver {
+  padding: 0.3rem 0.9rem;
+  border: 2px solid var(--encre); border-radius: 999px;
+  background: var(--blanc);
+  font: inherit; font-weight: 700; cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.sauver:hover { transform: scale(1.06); }
+.sauver[aria-pressed="true"] { background: var(--rose); }
+
+.rail-barre {
+  height: 8px;
+  border: 2px solid var(--encre); border-radius: 999px;
+  background: var(--blanc);
+  overflow: hidden;
+}
+.rail-barre span {
+  display: block; height: 100%; width: 12%;
+  background: var(--orange);
+  transition: width 0.15s;
+}
+
+/* ===== Saisons : sticky + défilement horizontal piloté par le scroll ===== */
+.saisons-scroll {
+  position: relative;
+  height: 400vh;
+  margin: 2rem 0;
+  border-top: 3px solid var(--encre);
+  border-bottom: 3px solid var(--encre);
+}
+.saisons-colle {
+  position: sticky; top: 0;
+  height: 100vh; height: 100dvh;
+  overflow: hidden;
+}
+.saisons-entete {
+  position: absolute; z-index: 5;
+  top: calc(var(--entete) + 1rem);
+  left: 1.5rem; right: 1.5rem;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+  pointer-events: none;
+}
+.saisons-entete > * { pointer-events: auto; }
+.saisons-entete h2 { margin: 0; }
+
+.points { display: flex; gap: 0.5rem; }
+.point {
+  width: 1.1rem; height: 1.1rem;
+  border: 3px solid var(--encre); border-radius: 50%;
+  background: var(--blanc);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.point.actif { background: var(--encre); transform: scale(1.35); }
+
+.saisons-piste { display: flex; width: 400vw; height: 100%; will-change: transform; }
+
+.saison {
+  position: relative;
+  flex: 0 0 100vw;
+  height: 100%;
+  display: grid; place-items: center;
+  padding: 7rem 1.5rem 3rem;
+  overflow: hidden;
+  border-right: 3px solid var(--encre);
+}
+.s1 { background: var(--rose); }
+.s2 { background: var(--jaune); }
+.s3 { background: var(--orange); }
+.s4 { background: var(--ciel); }
+
+.saison-mot {
+  position: absolute; left: 0.05em; bottom: -0.15em;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(7rem, 26vw, 22rem);
+  font-weight: 800; letter-spacing: -0.06em; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(28, 18, 71, 0.2);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.saison-corps { position: relative; z-index: 1; max-width: 34rem; }
+.saison-corps h3 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 800; line-height: 1; letter-spacing: -0.04em;
+  margin: 0.8rem 0;
+}
+.saison-corps p { font-size: 1.15rem; margin-bottom: 1.5rem; }
+.saison .puce { background: var(--blanc); }
+.saison .bouton { background: var(--blanc); }
+
+/* ===== Accordéons ===== */
+.accords { display: grid; gap: 1rem; max-width: 46rem; margin-top: 1.5rem; }
+.accord {
+  background: var(--blanc);
+  border: 3px solid var(--encre);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0 var(--encre);
+  overflow: hidden;
+}
+.accord summary {
+  padding: 1rem 1.25rem;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.2rem; font-weight: 700;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.accord summary::-webkit-details-marker { display: none; }
+.accord summary::after { content: "+"; font-size: 1.6rem; line-height: 1; transition: transform 0.25s; }
+.accord[open] summary::after { transform: rotate(45deg); }
+.accord[open] summary { background: var(--jaune); }
+.accord p { padding: 1rem 1.25rem 1.25rem; }
+
+/* ===== Contact ===== */
+.infos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.info {
+  padding: 1.4rem;
+  border: 3px solid var(--encre);
+  border-radius: 20px;
+  box-shadow: var(--ombre);
+}
+.info h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.info:nth-child(1) { background: var(--rose); }
+.info:nth-child(2) { background: var(--jaune); }
+.info:nth-child(3) { background: var(--ciel); }
+
+/* ===== Pied de page ===== */
+.pied { padding: 2rem 1.5rem; text-align: center; font-size: 0.95rem; border-top: 3px solid var(--encre); background: var(--blanc); }
+
+/* ===== Retour en haut ===== */
+.haut {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60;
+  width: 3.2rem; height: 3.2rem;
+  border: 3px solid var(--encre); border-radius: 50%;
+  background: var(--rose);
+  font-size: 1.4rem; font-weight: 800; cursor: pointer;
+  box-shadow: 3px 3px 0 var(--encre);
+  opacity: 0; transform: translateY(1rem); pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.haut.visible { opacity: 1; transform: none; pointer-events: auto; }
+
+/* ===== Carnet ===== */
+.carnet {
+  width: min(92vw, 28rem);
+  margin: auto;
+  padding: 1.5rem;
+  border: 3px solid var(--encre);
+  border-radius: 24px;
+  background: var(--fond);
+  color: var(--encre);
+  box-shadow: var(--ombre);
+}
+.carnet::backdrop { background: rgba(28, 18, 71, 0.55); }
+.carnet-tete { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.carnet-tete h2 { font-size: 2rem; letter-spacing: -0.04em; }
+.fermer {
+  width: 2.4rem; height: 2.4rem;
+  border: 3px solid var(--encre); border-radius: 50%;
+  background: var(--blanc); font-weight: 800; cursor: pointer;
+}
+.carnet-liste { list-style: none; display: grid; gap: 0.6rem; margin-bottom: 1.2rem; max-height: 50vh; overflow-y: auto; padding: 0.2rem 0.4rem 0.4rem 0.2rem; }
+.carnet-liste li {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--encre); border-radius: 14px;
+  background: var(--blanc);
+}
+.carnet-liste small { display: block; opacity: 0.7; }
+.carnet-liste button { border: 2px solid var(--encre); border-radius: 999px; background: var(--rose); padding: 0.2rem 0.7rem; font: inherit; font-weight: 700; cursor: pointer; }
+.carnet-vide { margin-bottom: 1.2rem; }
+
+/* ===== Mobile ===== */
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2rem; }
+  .hero-visuel { max-width: 22rem; }
+  .ville-tete { grid-template-columns: 1fr; gap: 1.5rem; }
+  .bloc { padding: 2.75rem 1.25rem; }
+  .menu a { padding: 0.3rem 0.7rem; font-size: 0.9rem; }
+  .rail-boutons { display: none; }
+}
+
+/* ===== Animations réduites : tout reste lisible, sans mouvement ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-piste { animation: none; }
+  .mega .lettre, .panel:not([hidden]) { animation: none; }
+  .indicateur, .lieu, .entete, .tablist { transition: none; }
+  .lieu { opacity: 1; transform: none; }
+
+  .saisons-scroll { height: auto; }
+  .saisons-colle { position: static; height: auto; overflow: visible; }
+  .saisons-entete { position: static; padding: 2rem 1.5rem 1rem; }
+  .points { display: none; }
+  .saisons-piste { width: auto; height: auto; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .saison { flex: 0 0 min(90vw, 36rem); height: auto; padding: 3rem 1.5rem; scroll-snap-align: start; }
+}

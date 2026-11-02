@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office de tourisme du Luberon : villes, lieux et idées de séjour</title>
+  <meta name="description" content="Préparez votre séjour dans le Luberon : villages, lieux à visiter, saisons et conseils pratiques.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="progression" id="progression"></div>
+
+  <!-- ===== EN-TÊTE (se cache quand on descend, revient quand on remonte) ===== -->
+  <header class="entete" id="entete">
+    <a class="logo" href="#accueil">luberon<span>.vibes</span></a>
+    <nav aria-label="Navigation principale">
+      <ul class="menu">
+        <li><a href="#villes" data-spy="villes">Villes</a></li>
+        <li><a href="#saisons" data-spy="saisons">Saisons</a></li>
+        <li><a href="#infos" data-spy="infos">Infos</a></li>
+        <li><a href="#contact" data-spy="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="bouton petit" id="ouvrir-carnet" aria-haspopup="dialog">
+      Mon carnet <span class="compteur" id="compteur">0</span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ===== ACCUEIL ===== -->
+    <section id="accueil" class="hero">
+      <div class="hero-texte">
+        <span class="puce">Office de tourisme · Luberon</span>
+        <h1 class="mega" id="titre">Luberon</h1>
+        <p class="hero-intro">
+          Des villages de pierre, des falaises d’ocre, des marchés et des vignes à perte de vue.
+          Choisis ta ville, on s’occupe du reste.
+        </p>
+        <div class="pastilles" id="quick" aria-label="Accès rapide aux villes"></div>
+      </div>
+
+      <div class="hero-visuel">
+        
+        <div class="photo photo-hero f-soleil" id="parallaxe"
+     style="--img:url('gordes.jpg')"
+     role="img" aria-label="Paysage du Luberon au coucher du soleil">
+</div>
+      </div>
+    </section>
+
+    <!-- ===== BANDEAU ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-piste">
+        <span>pierre dorée ✦ lavande ✦ vignes ✦ ocres ✦ marchés ✦ ruelles ✦ vélo ✦ rosé ✦ truffe ✦</span>
+        <span>pierre dorée ✦ lavande ✦ vignes ✦ ocres ✦ marchés ✦ ruelles ✦ vélo ✦ rosé ✦ truffe ✦</span>
+      </div>
+    </div>
+
+    <!-- ===== CHIFFRES ===== -->
+    <section class="chiffres" aria-label="Le Luberon en chiffres">
+      <div class="chiffre"><strong id="n-villes" data-cible="0">0</strong><span>villes à explorer</span></div>
+      <div class="chiffre"><strong id="n-lieux" data-cible="0">0</strong><span>lieux à découvrir</span></div>
+      <div class="chiffre"><strong id="n-saisons" data-cible="4">0</strong><span>saisons, 4 ambiances</span></div>
+    </section>
+
+    <!-- ===== VILLES (onglets générés par script.js) ===== -->
+    <section id="villes" class="bloc">
+      <h2>Choisis ta ville</h2>
+      <p class="chapeau">Chaque onglet = un village, ses lieux phares et ses bons plans. Fais défiler les cartes sur le côté.</p>
+      <div id="villes-app">
+        <noscript>Activez JavaScript pour afficher les villes.</noscript>
+      </div>
+    </section>
+
+    <!-- ===== SAISONS : le scroll vertical fait défiler horizontalement ===== -->
+    <section id="saisons" class="saisons-scroll" aria-label="Quand venir dans le Luberon">
+      <div class="saisons-colle">
+        <div class="saisons-entete">
+          <h2>Quand venir ?</h2>
+          <div class="points" id="points" aria-label="Choisir une saison"></div>
+        </div>
+
+        <div class="saisons-piste" id="piste">
+          <article class="saison s1">
+            <span class="saison-mot" aria-hidden="true">Printemps</span>
+            <div class="saison-corps">
+              <span class="puce">mars · mai</span>
+              <h3>Printemps</h3>
+              <p>La campagne verdit, les arbres fruitiers fleurissent et les sentiers sont agréables. Moins de monde, températures douces : idéal pour marcher.</p>
+              <a class="bouton" href="#bonnieux" data-ville="bonnieux">Bonnieux et ses cèdres</a>
+            </div>
+          </article>
+
+          <article class="saison s2">
+            <span class="saison-mot" aria-hidden="true">Été</span>
+            <div class="saison-corps">
+              <span class="puce">juin · août</span>
+              <h3>Été</h3>
+              <p>La lavande fleurit généralement entre fin juin et fin juillet. Il fait chaud et c’est la haute saison : réservez tôt et visitez le matin.</p>
+              <a class="bouton" href="#gordes" data-ville="gordes">Gordes et Sénanque</a>
+            </div>
+          </article>
+
+          <article class="saison s3">
+            <span class="saison-mot" aria-hidden="true">Automne</span>
+            <div class="saison-corps">
+              <span class="puce">septembre · novembre</span>
+              <h3>Automne</h3>
+              <p>Vendanges, vignes rousses et lumière dorée. Les falaises d’ocre sont particulièrement belles quand le soleil est bas.</p>
+              <a class="bouton" href="#roussillon" data-ville="roussillon">Roussillon et ses ocres</a>
+            </div>
+          </article>
+
+          <article class="saison s4">
+            <span class="saison-mot" aria-hidden="true">Hiver</span>
+            <div class="saison-corps">
+              <span class="puce">décembre · février</span>
+              <h3>Hiver</h3>
+              <p>Ciel clair, villages calmes et saison de la truffe. Certains commerces ferment : vérifiez les horaires avant de partir.</p>
+              <a class="bouton" href="#menerbes" data-ville="menerbes">Ménerbes, vin et truffe</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INFOS PRATIQUES ===== -->
+    <section id="infos" class="bloc">
+      <h2>Infos pratiques</h2>
+      <div class="accords">
+        <details class="accord" name="infos" open>
+          <summary>Venir dans le Luberon</summary>
+          <p>Les gares TGV d’Avignon et d’Aix-en-Provence sont les plus proches. Ensuite, la voiture reste le moyen le plus simple pour relier les villages.</p>
+        </details>
+        <details class="accord" name="infos">
+          <summary>Se déplacer sur place</summary>
+          <p>Les villages sont dispersés : prévoyez une voiture ou un vélo (de préférence électrique, car les routes montent). Garez-vous à l’entrée des villages perchés et finissez à pied.</p>
+        </details>
+        <details class="accord" name="infos">
+          <summary>Respecter les lieux</summary>
+          <p>Les champs de lavande et les vignes appartiennent à des exploitants : restez sur les chemins. En été, l’accès aux massifs forestiers peut être limité à cause du risque d’incendie : vérifiez la veille.</p>
+        </details>
+        <details class="accord" name="infos">
+          <summary>Combien de temps rester ?</summary>
+          <p>Une demi-journée par village, un week-end pour en combiner trois ou quatre, une semaine pour prendre le temps.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT (à remplacer par vos vraies informations) ===== -->
+    <section id="contact" class="bloc">
+      <h2>Passe nous voir</h2>
+      <div class="infos">
+        <article class="info"><h3>Adresse</h3><p>[Votre adresse]</p></article>
+        <article class="info"><h3>Horaires</h3><p>[Vos horaires d’ouverture]</p></article>
+        <article class="info"><h3>Nous écrire</h3><p>[votre-adresse@exemple.fr]<br>[Votre numéro de téléphone]</p></article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pied">
+    <p>Site créé pour s’entraîner. Vérifiez horaires, tarifs et ouvertures auprès des sites concernés avant de partir.</p>
+  </footer>
+
+  <button class="haut" id="haut" aria-label="Revenir en haut de la page">↑</button>
+
+  <!-- ===== CARNET DE VOYAGE ===== -->
+  <dialog id="carnet" class="carnet" aria-labelledby="carnet-titre">
+    <div class="carnet-tete">
+      <h2 id="carnet-titre">Mon carnet</h2>
+      <button class="fermer" id="fermer-carnet" aria-label="Fermer le carnet">✕</button>
+    </div>
+    <ul id="carnet-liste" class="carnet-liste"></ul>
+    <p id="carnet-vide" class="carnet-vide">Rien pour l’instant. Appuie sur « Sauver » sur un lieu pour le retrouver ici.</p>
+    <button class="bouton secondaire petit" id="vider">Vider le carnet</button>
+  </dialog>
+
+</body>
+</html>
