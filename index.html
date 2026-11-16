@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Office de tourisme du Luberon : villes, lieux et idées de séjour</title>
   <meta name="description" content="Préparez votre séjour dans le Luberon : villages, lieux à visiter, saisons et conseils pratiques.">
-
+<!-- Définit la thématique globale du site-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
+<!--Etablit à l'avance la connexion à Google Fonts pour accélerer le téléchargement et télécharge les polices d'écriture -->
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <!--Execute après lecture du html-->
 </head>
 <body>
-
+  <!--Fournit le résumé affiché sous le titre dans les résultats de recherche-->
+<!--modèle initial-->
   <div class="progression" id="progression"></div>
 
   <!-- ===== EN-TÊTE (se cache quand on descend, revient quand on remonte) ===== -->
@@ -28,34 +30,42 @@
         <li><a href="#contact" data-spy="contact">Contact</a></li>
       </ul>
     </nav>
+    <!--Fait défiler jusqu'à la section ciblée -->
     <button class="bouton petit" id="ouvrir-carnet" aria-haspopup="dialog">
       Mon carnet <span class="compteur" id="compteur">0</span>
     </button>
+      <!--Ouvre la fenetre du carnet au clic et affiche data-->
   </header>
-
+  <!--Affiche le bandeau du haut-->
+<!--onglets-->
   <main>
 
     <!-- ===== ACCUEIL ===== -->
     <section id="accueil" class="hero">
       <div class="hero-texte">
         <span class="puce">Office de tourisme · Luberon</span>
+  <!--Affiche une étiquette qui précise l'identité du site-->
         <h1 class="mega" id="titre">Luberon</h1>
+    <!--Affiche le titre principal, animable par le JS grace à son id-->
         <p class="hero-intro">
           Des villages de pierre, des falaises d’ocre, des marchés et des vignes à perte de vue.
           Choisis ta ville, on s’occupe du reste.
+  <!--Affiche l'accroche qui invie à choisir une ville-->
         </p>
         <div class="pastilles" id="quick" aria-label="Accès rapide aux villes"></div>
       </div>
-
+<!--Recoit les boutons de raccourci vers chaque ville, créés par le JS-->
       <div class="hero-visuel">
-        
+<!--Regroupe les éléments textuels du hero-->
         <div class="photo photo-hero f-soleil" id="parallaxe"
      style="--img:url('gordes.jpg')"
+ </div>
+    <!----> 
      role="img" aria-label="Paysage du Luberon au coucher du soleil">
 </div>
       </div>
     </section>
-
+<!--ajout phtotos de fond lorsque l'on entre dans dossier accueil-->
     <!-- ===== BANDEAU ===== -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-piste">
@@ -63,14 +73,14 @@
         <span>pierre dorée ✦ lavande ✦ vignes ✦ ocres ✦ marchés ✦ ruelles ✦ vélo ✦ rosé ✦ truffe ✦</span>
       </div>
     </div>
-
+<!--éléments mentionnés dans bandeau à défilement intelligent -->
     <!-- ===== CHIFFRES ===== -->
     <section class="chiffres" aria-label="Le Luberon en chiffres">
       <div class="chiffre"><strong id="n-villes" data-cible="0">0</strong><span>villes à explorer</span></div>
       <div class="chiffre"><strong id="n-lieux" data-cible="0">0</strong><span>lieux à découvrir</span></div>
       <div class="chiffre"><strong id="n-saisons" data-cible="4">0</strong><span>saisons, 4 ambiances</span></div>
     </section>
-
+<!--mention de données informatives-->
     <!-- ===== VILLES (onglets générés par script.js) ===== -->
     <section id="villes" class="bloc">
       <h2>Choisis ta ville</h2>
@@ -79,7 +89,7 @@
         <noscript>Activez JavaScript pour afficher les villes.</noscript>
       </div>
     </section>
-
+<!--intitulé de chaque onglet -->
     <!-- ===== SAISONS : le scroll vertical fait défiler horizontalement ===== -->
     <section id="saisons" class="saisons-scroll" aria-label="Quand venir dans le Luberon">
       <div class="saisons-colle">
@@ -87,7 +97,7 @@
           <h2>Quand venir ?</h2>
           <div class="points" id="points" aria-label="Choisir une saison"></div>
         </div>
-
+<!
         <div class="saisons-piste" id="piste">
           <article class="saison s1">
             <span class="saison-mot" aria-hidden="true">Printemps</span>

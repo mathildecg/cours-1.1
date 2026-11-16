@@ -9,7 +9,7 @@
   --blanc: #ffffff;
   --ombre: 6px 6px 0 var(--encre);
   --entete: 4.5rem; /* mis à jour par le JavaScript */
-}
+}<!--couleurs fond -->
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
